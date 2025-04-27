@@ -40,13 +40,7 @@ public class Main {
     public static Employee findEmployeeWithMinSalary(Employee[] employees) {
         Employee empWithMinSalary = null;
         for (Employee emp : employees) {
-            if (emp != null) {
-                empWithMinSalary = emp;
-                break;
-            }
-        }
-        for (Employee emp : employees) {
-            if (emp != null && empWithMinSalary != null && emp.getSalary() < empWithMinSalary.getSalary()) {
+            if (emp != null && (empWithMinSalary == null || (empWithMinSalary != null && emp.getSalary() < empWithMinSalary.getSalary()))) {
                 empWithMinSalary = emp;
             }
         }
@@ -56,13 +50,7 @@ public class Main {
     public static Employee findEmployeeWithMaxSalary(Employee[] employees) {
         Employee empWithMaxSalary = null;
         for (Employee emp : employees) {
-            if (emp != null) {
-                empWithMaxSalary = emp;
-                break;
-            }
-        }
-        for (Employee emp : employees) {
-            if (emp != null && empWithMaxSalary != null && emp.getSalary() > empWithMaxSalary.getSalary()) {
+            if (emp != null && (empWithMaxSalary == null || (empWithMaxSalary != null && emp.getSalary() > empWithMaxSalary.getSalary()))) {
                 empWithMaxSalary = emp;
             }
         }
@@ -70,8 +58,9 @@ public class Main {
     }
 
     public static double avgOfSalary(Employee[] employees) {
-        if (getAmount(employees) != 0) {
-            return sumOfSalary(employees) / getAmount(employees);
+        int amount = getAmount(employees);
+        if (amount != 0) {
+            return sumOfSalary(employees) / amount;
         }
         return 0;
     }

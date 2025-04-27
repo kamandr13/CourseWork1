@@ -42,7 +42,7 @@ public class Employee {
         return salary;
     }
 
-    public static int getCount() {
+    public int getCount() {
         return count;
     }
 
